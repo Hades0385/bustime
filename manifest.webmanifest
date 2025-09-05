@@ -1,7 +1,7 @@
 {
-  "name": "公車到站查詢",
-  "short_name": "公車到站",
-  "start_url": "/index.html",
+  "name": "bustaiwan",
+  "short_name": "bustaiwan",
+  "start_url": "bustime/index.html",
   "display": "standalone",
   "background_color": "#0b1212",
   "theme_color": "#0d9488",

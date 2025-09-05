@@ -4,8 +4,10 @@ const POLL_MS = 30_000;
 
 // 範例路線設定（請把 key 換成真實值）
 const ROUTES = [
-  { id: 'r1', label: '071401（範例路線 A）', key: '071401' },
-  { id: 'r2', label: '071402（範例路線 B）', key: '071402' }
+  { id: 'r1', label: '綠線(往嘉義大學)', key: '071401' },
+  { id: 'r2', label: '綠線(往大富路)', key: '071402' },
+  { id: 'r3', label: '綠A線(往嘉義大學)', key: '0714A1' },
+  { id: 'r4', label: '綠A線(往二二八公園)', key: '0714A2' }
 ];
 
 const els = {
