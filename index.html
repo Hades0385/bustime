@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0d9488" />
+<title>公車到站查詢（PWA）</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/pwa-192.png" />
+<link rel="apple-touch-icon" href="icons/pwa-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="app-bar">
+<h1>公車到站查詢</h1>
+<button id="btnInstall" class="btn small" hidden>安裝 App</button>
+</header>
+
+
+<main class="container">
+<section class="toolbar">
+<div class="row">
+<select id="routeSelect" aria-label="選擇路線"></select>
+<input id="search" type="search" inputmode="search" placeholder="搜尋站名（例：嘉義火車站）" aria-label="搜尋站名" />
+<button id="btnRefresh" class="btn" aria-label="手動更新">重新整理</button>
+</div>
+<div class="row gap">
+<label class="chip"><input type="checkbox" id="onlyActive" /> 只看有動態</label>
+<label class="chip"><input type="checkbox" id="nearbyFirst" /> 就近排序</label>
+</div>
+<div class="meta">
+<span id="lastUpdate">—</span>
+<span class="dot">•</span>
+<span>每 30 秒自動更新</span>
+</div>
+<div id="globalAlert" class="alert" hidden></div>
+</section>
+
+
+<!-- 時間軸清單（用 timeline 風格呈現） -->
+<section id="timeline" class="timeline" role="list" aria-live="polite" aria-busy="true">
+<!-- 動態產生 -->
+</section>
+
+
+<template id="stationTpl">
+<div class="station-row" role="listitem">
+<div class="time-col">
+<div class="time">--:--</div>
+<div class="delay" hidden></div>
+</div>
+<div class="line-col">
+<div class="dot"></div>
+<div class="line"></div>
+</div>
+<div class="name-col">
+<div class="stop-name">(未命名站)</div>
+<div class="addr" style="font-size:12px; color:var(--muted); margin-top:6px;">—</div>
+</div>
+</div>
+</template>
+
+
+</main>
+
+
+<footer class="footer">
+<small>資料來源：<a href="https://www.taiwanbus.tw/" target="_blank" rel="noopener">台灣公車動態</a>（透過 GAS 轉接）</small>
+</footer>
+
+  <script>
+    // 你的 GAS Web App 入口（下方會教你怎麼部署，貼上產生的「執行網址」）
+    window.GAS_URL = "https://script.google.com/macros/s/AKfycbxkAX_U63UthBP0mnrlp2tsDRPUR7ORGfXA8c-zmdj0LO8Pa9CCTqTHzvYqPNfw1yQL/exec";
+  </script>
+  <script src="app.js" defer></script>
+  <script>
+// 註冊 Service Worker
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => {
+navigator.serviceWorker.register('/sw.js');
+});
+}
+</script>
+</body>
+</html>
