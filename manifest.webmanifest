@@ -1,6 +1,6 @@
 {
-  "name": "bustaiwan",
-  "short_name": "bustaiwan",
+  "name": "BusTaiwan",
+  "short_name": "BusTaiwan",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0b1212",
